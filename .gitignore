@@ -13,6 +13,7 @@ target/
 .springBeans
 .sts4-cache
 .env
+.metadata/
 
 ### IntelliJ IDEA ###
 .idea
@@ -33,3 +34,13 @@ build/
 ### VS Code ###
 .vscode/
 ai-portfolio-backend/
+
+### macOS system files
+.DS_Store
+
+### Logs and build files
+*.log
+bin/
+build/
+target/
+
