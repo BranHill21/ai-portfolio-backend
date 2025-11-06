@@ -13,6 +13,16 @@ public class Asset {
     private double buyPrice;
     
     
+	public Asset(String id, String userId, String symbol, double quantity, double buyPrice) {
+		super();
+		this.id = id;
+		this.userId = userId;
+		this.symbol = symbol;
+		this.quantity = quantity;
+		this.buyPrice = buyPrice;
+	}
+	
+	
 	public String getId() {
 		return id;
 	}
