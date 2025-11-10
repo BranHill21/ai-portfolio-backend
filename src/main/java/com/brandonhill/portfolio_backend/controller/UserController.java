@@ -16,14 +16,6 @@ import java.util.Optional;
 @CrossOrigin(origins = {"http://localhost:3000", "https://stockfolioai.netlify.app/"})
 public class UserController {
 	
-	@Value("${spring.data.mongodb.uri}")
-    private String mongoUri;
-
-    @PostConstruct
-    public void printMongoUri() {
-        System.out.println("!!!ME ME ME!!! Mongo URI = " + mongoUri);
-    }
-
     @Autowired
     private UserService userService;
 
