@@ -7,7 +7,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/predict")
-@CrossOrigin
+@CrossOrigin(origins = {"http://localhost:3000", "https://stockfolioai.netlify.app/"})
 public class PredictionController {
 
     @Value("${flask.api.url}")
