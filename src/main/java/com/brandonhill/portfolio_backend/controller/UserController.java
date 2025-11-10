@@ -2,7 +2,11 @@ package com.brandonhill.portfolio_backend.controller;
 
 import com.brandonhill.portfolio_backend.model.User;
 import com.brandonhill.portfolio_backend.service.UserService;
+
+import jakarta.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -11,6 +15,14 @@ import java.util.Optional;
 @RequestMapping("/api/users")
 @CrossOrigin(origins = {"http://localhost:3000", "https://stockfolioai.netlify.app/"})
 public class UserController {
+	
+	@Value("${spring.data.mongodb.uri}")
+    private String mongoUri;
+
+    @PostConstruct
+    public void printMongoUri() {
+        System.out.println("!!!ME ME ME!!! Mongo URI = " + mongoUri);
+    }
 
     @Autowired
     private UserService userService;
