@@ -19,8 +19,8 @@ public class TestPageController {
         sampleResult.put("recommendation", "BUY");
         sampleResult.put("sentiment", 0.0);
         sampleResult.put("symbol", "IBM");
-        String mongoUri = System.getenv("MONGO_URI");
-        System.out.println("MONGO: " + mongoUri);
+//        String mongoUri = System.getenv("MONGO_URI");
+//        System.out.println("MONGO: " + mongoUri);
         return sampleResult;
     }
 }
