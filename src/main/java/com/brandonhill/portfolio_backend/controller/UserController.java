@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin
+@CrossOrigin(origins = {"http://localhost:3000", "https://stockfolioai.netlify.app/"})
 public class UserController {
 
     @Autowired
