@@ -14,7 +14,13 @@ public class UserService {
     private UserRepository userRepository;
 
     public User register(User user) {
-        return userRepository.save(user);
+    	Optional<User> testUser = userRepository.findByUsername(user.getUsername());
+    	if(!testUser.equals(null)) {
+    		return userRepository.save(user);
+    	}
+    	else {
+    		return null;
+    	}
     }
 
     public Optional<User> login(String username, String password) {
