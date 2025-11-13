@@ -20,7 +20,7 @@ public class AssetController {
         return assetService.getAssetsByUser(userId);
     }
 
-    @PostMapping
+    @PostMapping("/addAsset")
     public Asset addAsset(@RequestBody Asset asset) {
         return assetService.addAsset(asset);
     }
