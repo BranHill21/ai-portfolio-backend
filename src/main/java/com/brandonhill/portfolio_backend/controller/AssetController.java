@@ -25,12 +25,12 @@ public class AssetController {
         return assetService.addAsset(asset);
     }
 
-    @PutMapping
+    @PutMapping("/update/{id}")
     public Asset updateAsset(@RequestBody Asset asset) {
         return assetService.updateAsset(asset);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteAsset(@PathVariable String id) {
         assetService.deleteAsset(id);
     }
