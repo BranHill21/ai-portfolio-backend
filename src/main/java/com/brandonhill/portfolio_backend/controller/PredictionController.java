@@ -1,6 +1,7 @@
 package com.brandonhill.portfolio_backend.controller;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import java.util.Map;
@@ -18,5 +19,10 @@ public class PredictionController {
     @PostMapping
     public Map<String, Object> getPrediction(@RequestBody Map<String, Object> requestData) {
         return restTemplate.postForObject(flaskApiUrl, requestData, Map.class);
+    }
+    
+    @GetMapping("/ping")
+    public ResponseEntity<?> ping() {
+        return ResponseEntity.ok(Map.of("status", "awake"));
     }
 }
