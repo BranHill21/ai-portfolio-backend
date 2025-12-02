@@ -21,8 +21,4 @@ public class PredictionController {
         return restTemplate.postForObject(flaskApiUrl, requestData, Map.class);
     }
     
-    @GetMapping("/ping")
-    public ResponseEntity<?> ping() {
-        return ResponseEntity.ok(Map.of("status", "awake"));
-    }
 }
