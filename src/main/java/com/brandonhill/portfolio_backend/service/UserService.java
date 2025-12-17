@@ -21,23 +21,32 @@ public class UserService {
     }
 
     public User register(User user) {
-    	String rawPassword = user.getPassword();
-        String hashedPassword = passwordEncoder.encode(rawPassword);
+
+        // Check duplicate username
+        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
+            throw new IllegalArgumentException("Username already exists");
+        }
+
+        // Check duplicate email
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+            throw new IllegalArgumentException("Email already exists");
+        }
+
+        // Hash password
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
-    	Optional<User> testUser = userRepository.findByUsername(user.getUsername());
-    	if(!testUser.equals(null)) {
-    		return userRepository.save(user);
-    	}
-    	else {
-    		return null;
-    	}
+
+        return userRepository.save(user);
     }
 
     public Optional<User> login(String username, String password) {
         Optional<User> user = userRepository.findByUsername(username);
-        if (user.isPresent() && passwordEncoder.matches(password, user.get().getPassword())) {
+
+        if (user.isPresent() &&
+            passwordEncoder.matches(password, user.get().getPassword())) {
             return user;
         }
+
         return Optional.empty();
     }
 }
