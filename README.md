@@ -1,4 +1,6 @@
 # StockfolioAI Backend
+[Link to Fontend](https://github.com/BranHill21/ai-portfolio-frontend)
+[Link to ML service](https://github.com/BranHill21/ai-portfolio-mlservice)
 
 ## Overview
 
