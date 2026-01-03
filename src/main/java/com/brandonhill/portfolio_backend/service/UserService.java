@@ -49,4 +49,46 @@ public class UserService {
 
         return Optional.empty();
     }
+    
+    // -------- UPDATE USER --------
+    public Optional<User> updateUser(String userId, User updatedUser) {
+
+        Optional<User> existingUserOpt = userRepository.findById(userId);
+
+        if (existingUserOpt.isEmpty()) {
+            return Optional.empty();
+        }
+
+        User existingUser = existingUserOpt.get();
+
+        // Update username if provided
+        if (updatedUser.getUsername() != null) {
+            existingUser.setUsername(updatedUser.getUsername());
+        }
+
+        // Update email if provided
+        if (updatedUser.getEmail() != null) {
+            existingUser.setEmail(updatedUser.getEmail());
+        }
+
+        // Update password only if provided
+        if (updatedUser.getPassword() != null && !updatedUser.getPassword().isBlank()) {
+            existingUser.setPassword(
+                passwordEncoder.encode(updatedUser.getPassword())
+            );
+        }
+
+        return Optional.of(userRepository.save(existingUser));
+    }
+
+    // -------- DELETE USER --------
+    public boolean deleteUser(String userId) {
+
+        if (!userRepository.existsById(userId)) {
+            return false;
+        }
+
+        userRepository.deleteById(userId);
+        return true;
+    }
 }
